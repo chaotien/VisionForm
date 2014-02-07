@@ -1,0 +1,13 @@
+Video Processing Platform
+
+made with:
+
+VS 2010 windows form project
+
+OpenCV 2.4.3
+
+Function:
+
+Open video file and play
+
+Drag and draw rectangle in display window
