@@ -43,6 +43,7 @@ namespace UltraPaint {
 			{
 				delete components;
 				delete UltraPen;
+				delete Video1;
 			}
 		}
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
@@ -99,28 +100,29 @@ namespace UltraPaint {
 			this->openToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->fileToolStripMenuItem, 
 				this->deviceToolStripMenuItem});
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(51, 20);
+			this->openToolStripMenuItem->Size = System::Drawing::Size(48, 20);
 			this->openToolStripMenuItem->Text = L"Open";
 			// 
 			// fileToolStripMenuItem
 			// 
 			this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
-			this->fileToolStripMenuItem->Size = System::Drawing::Size(112, 22);
+			this->fileToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->fileToolStripMenuItem->Text = L"File";
 			this->fileToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::fileToolStripMenuItem_Click);
 			// 
 			// deviceToolStripMenuItem
 			// 
 			this->deviceToolStripMenuItem->Name = L"deviceToolStripMenuItem";
-			this->deviceToolStripMenuItem->Size = System::Drawing::Size(112, 22);
+			this->deviceToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->deviceToolStripMenuItem->Text = L"Device";
+			this->deviceToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::deviceToolStripMenuItem_Click);
 			// 
 			// ButtonPlay
 			// 
 			this->ButtonPlay->Enabled = false;
-			this->ButtonPlay->Location = System::Drawing::Point(0, 34);
+			this->ButtonPlay->Location = System::Drawing::Point(0, 37);
 			this->ButtonPlay->Name = L"ButtonPlay";
-			this->ButtonPlay->Size = System::Drawing::Size(75, 23);
+			this->ButtonPlay->Size = System::Drawing::Size(75, 25);
 			this->ButtonPlay->TabIndex = 1;
 			this->ButtonPlay->Text = L"Play";
 			this->ButtonPlay->UseVisualStyleBackColor = true;
@@ -128,9 +130,9 @@ namespace UltraPaint {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(0, 63);
+			this->pictureBox1->Location = System::Drawing::Point(0, 68);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(320, 240);
+			this->pictureBox1->Size = System::Drawing::Size(320, 260);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 2;
 			this->pictureBox1->TabStop = false;
@@ -146,9 +148,9 @@ namespace UltraPaint {
 			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(321, 305);
+			this->ClientSize = System::Drawing::Size(321, 330);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->ButtonPlay);
 			this->Controls->Add(this->menuStrip1);
@@ -194,7 +196,7 @@ private:
 				         string VideoFileName;
 				         MarshalString(openFileDialog1->FileName, VideoFileName);
 				         delete Video1;
-				         Video1 = new VideoCapture();
+				         Video1 = new VideoCapture;
 				         Video1->open(VideoFileName);
 				         if ( !Video1->isOpened())
                          {
@@ -210,6 +212,11 @@ private:
 				 ButtonPlay->Enabled = true;
 
 			 }
+private: System::Void deviceToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+                 delete Video1;
+				 Video1 = new VideoCapture(0);
+				 timer1->Enabled = true;
+		     }
 	private: System::Void ButtonPlay_Click(System::Object^  sender, System::EventArgs^  e) {
 				 if(ButtonPlay->Text == "Play")
 				 {
@@ -228,10 +235,6 @@ private:
 
 				 //Display in pictureBox1
 				 delete image1;
-				 //image1=(gcnew 
-				 //System::Drawing::Bitmap(Curframe.cols,Curframe.rows,Curframe.step, 
-				 //System::Drawing::Imaging::PixelFormat::Format24bppRgb,
-				 //(System::IntPtr)Curframe.data));
 				 image1 = ConvertMatToBitmap(Curframe);
 				 this->pictureBox1->Image = image1;
 		     }
@@ -273,7 +276,7 @@ private:
 		}  
 
 		 /** Mouse event in pictureBox1. Drag and Draw a rectangle **/
-		 static bool is_dragging = false;  
+		 static bool is_dragging = false;
          static int x_down, y_down, x_up, y_up;
 		 static int DrawRecX, DrawRecY, DrawRecWidth, DrawRecHeight;
 private: System::Void pictureBox1_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
@@ -307,6 +310,7 @@ private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows
 			 DrawRecHeight = y_down <= y_up ? y_up - y_down : y_down - y_up;
 			 gr->DrawRectangle(UltraPen, DrawRecX ,DrawRecY, DrawRecWidth, DrawRecHeight);
 		 }
+
 };
 }
 

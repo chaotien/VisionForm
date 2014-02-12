@@ -1,4 +1,4 @@
-﻿已經開始建置於 2014/2/8 上午 02:32:36。
+﻿已經開始建置於 2014/2/12 下午 06:41:25。
      1>節點 2 (build 目標) 上的專案 "D:\Dropbox\Ultra Vision\UltraPaint\UltraPaint\UltraPaint.vcxproj"。
      1>InitializeBuildStatus:
          由於指定了 "AlwaysCreate"，因此正在建立 "Debug\UltraPaint.unsuccessfulbuild"。
@@ -8,7 +8,7 @@
          所有輸出都是最新的。
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\opencv\build\include /IC:\opencv\build\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\UltraPaint.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt UltraPaint.cpp /clr:nostdlib 
          UltraPaint.cpp
-     1>d:\dropbox\ultra vision\ultrapaint\ultrapaint\Form1.h(204): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
+     1>d:\dropbox\ultra vision\ultrapaint\ultrapaint\Form1.h(206): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
          所有輸出都是最新的。
        CoreResGen:
          所有輸出都是最新的。
@@ -30,4 +30,4 @@
 
 建置成功。
 
-經過時間 00:00:01.98
+經過時間 00:00:01.74
