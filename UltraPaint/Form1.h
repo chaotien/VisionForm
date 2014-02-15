@@ -7,6 +7,8 @@
 //#include <opencv2/imgproc/imgproc.hpp>  // Gaussian Blur
 #include <opencv2/core/core.hpp>        // Basic OpenCV structures (cv::Mat, Scalar)
 #include <opencv2/highgui/highgui.hpp>  // OpenCV window I/O
+#include <opencv2/objdetect/objdetect.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 namespace UltraPaint {
 	using namespace std;
@@ -54,6 +56,7 @@ namespace UltraPaint {
 	private: System::Windows::Forms::Button^  ButtonPlay;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 	private: System::Windows::Forms::Timer^  timer1;
+	private: System::Windows::Forms::Button^  OB_Detection;
 
 	protected: 
 
@@ -82,6 +85,7 @@ namespace UltraPaint {
 			this->ButtonPlay = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->OB_Detection = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -91,7 +95,7 @@ namespace UltraPaint {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->openToolStripMenuItem});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(321, 24);
+			this->menuStrip1->Size = System::Drawing::Size(325, 24);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -146,11 +150,22 @@ namespace UltraPaint {
 			this->timer1->Interval = 30;
 			this->timer1->Tick += gcnew System::EventHandler(this, &Form1::timer1_Tick);
 			// 
+			// OB_Detection
+			// 
+			this->OB_Detection->Location = System::Drawing::Point(81, 37);
+			this->OB_Detection->Name = L"OB_Detection";
+			this->OB_Detection->Size = System::Drawing::Size(99, 23);
+			this->OB_Detection->TabIndex = 3;
+			this->OB_Detection->Text = L"Object Detection";
+			this->OB_Detection->UseVisualStyleBackColor = true;
+			this->OB_Detection->Click += gcnew System::EventHandler(this, &Form1::OB_Detection_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(321, 330);
+			this->ClientSize = System::Drawing::Size(325, 330);
+			this->Controls->Add(this->OB_Detection);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->ButtonPlay);
 			this->Controls->Add(this->menuStrip1);
@@ -171,6 +186,7 @@ private:
 	static int CurFrame=0;
 	VideoCapture *Video1;
 	Pen ^UltraPen;
+	CascadeClassifier *cv_cascade;
 
 	/** System::String to cv::string **/
 	void MarshalString ( System::String^ s, string& os ) 
@@ -204,17 +220,16 @@ private:
 							 return;
                          }
 						 timer1->Interval = 1000/Video1->get(CV_CAP_PROP_FPS);
+						 this->Text = "YO FPS: "+ 1000/timer1->Interval;
+				         this->ButtonPlay->Text = L"Play";
+				         ButtonPlay->Enabled = true;
 			         }
 		         }
-
-				 this->Text = "YO FPS: "+ 1000/timer1->Interval;
-				 this->ButtonPlay->Text = L"Play";
-				 ButtonPlay->Enabled = true;
-
 			 }
 private: System::Void deviceToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
                  delete Video1;
 				 Video1 = new VideoCapture(0);
+				 //timer1->Interval = 1000/Video1->get(CV_CAP_PROP_FPS);
 				 timer1->Enabled = true;
 		     }
 	private: System::Void ButtonPlay_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -232,6 +247,21 @@ private: System::Void deviceToolStripMenuItem_Click(System::Object^  sender, Sys
     private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
 				 Mat Curframe;
 				 Video1->read(Curframe);
+				 
+				 //Image processing for each frame here
+				 Mat frame_gray;
+                 cvtColor( Curframe, frame_gray, CV_BGR2GRAY );
+
+                 if(cv_cascade!=NULL)
+                 {
+					 std::vector<Rect> Objects;
+	                 cv_cascade->detectMultiScale( frame_gray, Objects, 1.1, 3, 0, cv::Size(30, 30),cv::Size(60, 60) );
+				     for( int i = 0; i < Objects.size(); i++ )
+				     {
+				         cv::Point center( Objects[i].x + Objects[i].width*0.5, Objects[i].y + Objects[i].height*0.5 );
+				         ellipse( Curframe, center, cv::Size( Objects[i].width*0.5, Objects[i].height*0.5), 0, 0, 360, cv::Scalar( 255, 0, 0 ), 3, 8, 0 );
+				     }
+			     }
 
 				 //Display in pictureBox1
 				 delete image1;
@@ -311,6 +341,21 @@ private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows
 			 gr->DrawRectangle(UltraPen, DrawRecX ,DrawRecY, DrawRecWidth, DrawRecHeight);
 		 }
 
+private: System::Void OB_Detection_Click(System::Object^  sender, System::EventArgs^  e) {
+			 OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
+			 openFileDialog1->Filter = "model files (*.xml)|*.xml|All files (*.*)|*.*";
+		     openFileDialog1->FilterIndex = 1;
+		     openFileDialog1->RestoreDirectory = true;
+
+			 if ( openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK )
+		     {
+				 string cv_cascade_name;
+				 MarshalString(openFileDialog1->FileName, cv_cascade_name);
+				 delete cv_cascade;
+				 cv_cascade = new CascadeClassifier;
+				 if( !cv_cascade->load( cv_cascade_name ) ){ printf("--(!)Error loading\n");  }
+			 }
+		 }
 };
 }
 
