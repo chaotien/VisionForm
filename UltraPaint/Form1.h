@@ -249,23 +249,32 @@ private: System::Void deviceToolStripMenuItem_Click(System::Object^  sender, Sys
 				 Video1->read(Curframe);
 				 
 				 //Image processing for each frame here
-				 Mat frame_gray;
+				 Mat frame_gray, frame_small;
                  cvtColor( Curframe, frame_gray, CV_BGR2GRAY );
+                 resize(frame_gray, frame_small, cv::Size(180,130));
 
                  if(cv_cascade!=NULL)
                  {
 					 std::vector<Rect> Objects;
-	                 cv_cascade->detectMultiScale( frame_gray, Objects, 1.1, 3, 0, cv::Size(30, 30),cv::Size(60, 60) );
+	                 cv_cascade->detectMultiScale( frame_small, Objects, 1.01, 5, 0, cv::Size(24, 16),cv::Size(26, 18) );
 				     for( int i = 0; i < Objects.size(); i++ )
 				     {
+				         Objects[i].x = Objects[i].x*Curframe.cols/frame_small.cols;
+				         Objects[i].y = Objects[i].y*Curframe.rows/frame_small.rows;
+				         Objects[i].width = Objects[i].width*Curframe.cols/180;
+				         Objects[i].height = Objects[i].height*Curframe.rows/130;
+
 				         cv::Point center( Objects[i].x + Objects[i].width*0.5, Objects[i].y + Objects[i].height*0.5 );
 				         ellipse( Curframe, center, cv::Size( Objects[i].width*0.5, Objects[i].height*0.5), 0, 0, 360, cv::Scalar( 255, 0, 0 ), 3, 8, 0 );
 				     }
 			     }
 
 				 //Display in pictureBox1
+				 
 				 delete image1;
 				 image1 = ConvertMatToBitmap(Curframe);
+				 //image1 = CopyMatToBitmap(&Curframe);
+
 				 this->pictureBox1->Image = image1;
 		     }
 
@@ -303,7 +312,45 @@ private: System::Void deviceToolStripMenuItem_Click(System::Object^  sender, Sys
 		    }  
 		  
 		    return (bmpImg);  
-		}  
+		}
+
+		//適用於需同步顯示多個Image時
+		System::Drawing::Bitmap^ CopyMatToBitmap(cv::Mat *src)   
+		{  
+		    // bitmap 初始化  
+		    System::Drawing::Bitmap ^dst = gcnew System::Drawing::Bitmap(  
+		        src->cols, src->rows, System::Drawing::Imaging::PixelFormat::Format24bppRgb);  
+		  
+		    // 获取 bitmap 数据指针  
+		    System::Drawing::Imaging::BitmapData ^data = dst->LockBits(  
+		        *(gcnew System::Drawing::Rectangle(0, 0, dst->Width, dst->Height)),   
+		        System::Drawing::Imaging::ImageLockMode::ReadWrite,   
+		        System::Drawing::Imaging::PixelFormat::Format24bppRgb  
+		        );  
+		  
+		    // 获取 cv::Mat 数据地址  
+		    src->addref();  
+		  
+		    // 复制图像数据  
+		    if (src->channels() == 3 && src->isContinuous()) {  
+		        memcpy(data->Scan0.ToPointer(), src->data,   
+		            src->rows * src->cols * src->channels());  
+		    }  
+		    else {  
+		        for (int i = 0; i < src->rows * src->cols; i++) {  
+		            Byte *p = (Byte *)data->Scan0.ToPointer();  
+		            *(p + i * 3) = *(p + i * 3 + 1) = *(p + i * 3 + 2) = *(src->data + i);  
+		        }  
+		    }  
+		  
+		    // 释放 cv::Mat 数据  
+		    src->release();  
+		  
+		    // 解除 bitmap 数据保护  
+		    dst->UnlockBits(data);  
+		  
+		    return dst;  
+		}
 
 		 /** Mouse event in pictureBox1. Drag and Draw a rectangle **/
 		 static bool is_dragging = false;

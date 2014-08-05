@@ -1,5 +1,5 @@
-﻿已經開始建置於 2014/2/16 上午 01:24:31。
-     1>節點 2 (build 目標) 上的專案 "D:\Dropbox\Ultra Vision\UltraPaint\UltraPaint\UltraPaint.vcxproj"。
+﻿已經開始建置於 2014/8/5 下午 04:35:59。
+     1>節點 2 (build 目標) 上的專案 "D:\Dropbox\Research\Ultra Vision Platform\UltraPaint\UltraPaint\UltraPaint.vcxproj"。
      1>InitializeBuildStatus:
          由於指定了 "AlwaysCreate"，因此正在建立 "Debug\UltraPaint.unsuccessfulbuild"。
        GenerateTargetFrameworkMonikerAttribute:
@@ -8,31 +8,31 @@
          所有輸出都是最新的。
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\opencv\build\include /IC:\opencv\build\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\UltraPaint.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt UltraPaint.cpp /clr:nostdlib 
          UltraPaint.cpp
-     1>d:\dropbox\ultra vision\ultrapaint\ultrapaint\Form1.h(222): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
-     1>d:\dropbox\ultra vision\ultrapaint\ultrapaint\Form1.h(259): warning C4018: '<' : signed/unsigned 不相符
-     1>d:\dropbox\ultra vision\ultrapaint\ultrapaint\Form1.h(261): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
-     1>d:\dropbox\ultra vision\ultrapaint\ultrapaint\Form1.h(261): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
-     1>d:\dropbox\ultra vision\ultrapaint\ultrapaint\Form1.h(262): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
-     1>d:\dropbox\ultra vision\ultrapaint\ultrapaint\Form1.h(262): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(222): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(260): warning C4018: '<' : signed/unsigned 不相符
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(267): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(267): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(268): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(268): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
          所有輸出都是最新的。
        CoreResGen:
-         所有輸出都是最新的。
+         相對於資源的來源檔案，並沒有資源過期。將略過產生資源。
        ResourceCompile:
          所有輸出都是最新的。
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Dropbox\Ultra Vision\UltraPaint\Debug\UltraPaint.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\opencv\build\x86\vc10\lib /LIBPATH:C:\opencv\build\x86\vc10\lib opencv_highgui243d.lib opencv_imgproc243d.lib opencv_core243d.lib opencv_objdetect243d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /ASSEMBLYRESOURCE:Debug\UltraPaint.Form1.resources /MANIFEST /ManifestFile:"Debug\UltraPaint.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Dropbox\Ultra Vision\UltraPaint\Debug\UltraPaint.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\app.res
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Dropbox\Research\Ultra Vision Platform\UltraPaint\Debug\UltraPaint.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\opencv\build\x86\vc10\lib /LIBPATH:C:\opencv\build\x86\vc10\lib opencv_highgui243d.lib opencv_imgproc243d.lib opencv_core243d.lib opencv_objdetect243d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /ASSEMBLYRESOURCE:Debug\UltraPaint.Form1.resources /MANIFEST /ManifestFile:"Debug\UltraPaint.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Dropbox\Research\Ultra Vision Platform\UltraPaint\Debug\UltraPaint.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\app.res
          Debug\AssemblyInfo.obj
          Debug\stdafx.obj
          Debug\UltraPaint.obj
          "Debug\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
-         UltraPaint.vcxproj -> D:\Dropbox\Ultra Vision\UltraPaint\Debug\UltraPaint.exe
+         UltraPaint.vcxproj -> D:\Dropbox\Research\Ultra Vision Platform\UltraPaint\Debug\UltraPaint.exe
        Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\Dropbox\Ultra Vision\UltraPaint\Debug\UltraPaint.exe;#1" /manifest Debug\UltraPaint.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\Dropbox\Research\Ultra Vision Platform\UltraPaint\Debug\UltraPaint.exe;#1" /manifest Debug\UltraPaint.exe.intermediate.manifest
        FinalizeBuildStatus:
          正在刪除檔案 "Debug\UltraPaint.unsuccessfulbuild"。
          正在變更時間戳記 "Debug\UltraPaint.lastbuildstate"。
-     1>專案 "D:\Dropbox\Ultra Vision\UltraPaint\UltraPaint\UltraPaint.vcxproj" (build 目標) 建置完成。
+     1>專案 "D:\Dropbox\Research\Ultra Vision Platform\UltraPaint\UltraPaint\UltraPaint.vcxproj" (build 目標) 建置完成。
 
 建置成功。
 
-經過時間 00:00:01.95
+經過時間 00:00:01.97
