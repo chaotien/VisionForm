@@ -57,6 +57,7 @@ namespace UltraPaint {
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 	private: System::Windows::Forms::Timer^  timer1;
 	private: System::Windows::Forms::Button^  OB_Detection;
+	private: System::Windows::Forms::ToolStripMenuItem^  imageToolStripMenuItem;
 
 	protected: 
 
@@ -86,6 +87,7 @@ namespace UltraPaint {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->OB_Detection = (gcnew System::Windows::Forms::Button());
+			this->imageToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -95,38 +97,40 @@ namespace UltraPaint {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->openToolStripMenuItem});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(325, 24);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(8, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(433, 28);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// openToolStripMenuItem
 			// 
-			this->openToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->fileToolStripMenuItem, 
-				this->deviceToolStripMenuItem});
+			this->openToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {this->fileToolStripMenuItem, 
+				this->deviceToolStripMenuItem, this->imageToolStripMenuItem});
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(48, 20);
+			this->openToolStripMenuItem->Size = System::Drawing::Size(57, 24);
 			this->openToolStripMenuItem->Text = L"Open";
 			// 
 			// fileToolStripMenuItem
 			// 
 			this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
-			this->fileToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->fileToolStripMenuItem->Size = System::Drawing::Size(152, 24);
 			this->fileToolStripMenuItem->Text = L"File";
 			this->fileToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::fileToolStripMenuItem_Click);
 			// 
 			// deviceToolStripMenuItem
 			// 
 			this->deviceToolStripMenuItem->Name = L"deviceToolStripMenuItem";
-			this->deviceToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->deviceToolStripMenuItem->Size = System::Drawing::Size(152, 24);
 			this->deviceToolStripMenuItem->Text = L"Device";
 			this->deviceToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::deviceToolStripMenuItem_Click);
 			// 
 			// ButtonPlay
 			// 
 			this->ButtonPlay->Enabled = false;
-			this->ButtonPlay->Location = System::Drawing::Point(0, 37);
+			this->ButtonPlay->Location = System::Drawing::Point(0, 46);
+			this->ButtonPlay->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->ButtonPlay->Name = L"ButtonPlay";
-			this->ButtonPlay->Size = System::Drawing::Size(75, 25);
+			this->ButtonPlay->Size = System::Drawing::Size(100, 31);
 			this->ButtonPlay->TabIndex = 1;
 			this->ButtonPlay->Text = L"Play";
 			this->ButtonPlay->UseVisualStyleBackColor = true;
@@ -134,9 +138,10 @@ namespace UltraPaint {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(0, 68);
+			this->pictureBox1->Location = System::Drawing::Point(0, 84);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(320, 260);
+			this->pictureBox1->Size = System::Drawing::Size(427, 320);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 2;
 			this->pictureBox1->TabStop = false;
@@ -152,24 +157,33 @@ namespace UltraPaint {
 			// 
 			// OB_Detection
 			// 
-			this->OB_Detection->Location = System::Drawing::Point(81, 37);
+			this->OB_Detection->Location = System::Drawing::Point(108, 46);
+			this->OB_Detection->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->OB_Detection->Name = L"OB_Detection";
-			this->OB_Detection->Size = System::Drawing::Size(99, 23);
+			this->OB_Detection->Size = System::Drawing::Size(132, 28);
 			this->OB_Detection->TabIndex = 3;
 			this->OB_Detection->Text = L"Object Detection";
 			this->OB_Detection->UseVisualStyleBackColor = true;
 			this->OB_Detection->Click += gcnew System::EventHandler(this, &Form1::OB_Detection_Click);
 			// 
+			// imageToolStripMenuItem
+			// 
+			this->imageToolStripMenuItem->Name = L"imageToolStripMenuItem";
+			this->imageToolStripMenuItem->Size = System::Drawing::Size(152, 24);
+			this->imageToolStripMenuItem->Text = L"Image";
+			this->imageToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::imageToolStripMenuItem_Click);
+			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(325, 330);
+			this->ClientSize = System::Drawing::Size(433, 406);
 			this->Controls->Add(this->OB_Detection);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->ButtonPlay);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"Form1";
 			this->Text = L"Form1";
 			this->menuStrip1->ResumeLayout(false);
@@ -402,6 +416,38 @@ private: System::Void OB_Detection_Click(System::Object^  sender, System::EventA
 				 cv_cascade = new CascadeClassifier;
 				 if( !cv_cascade->load( cv_cascade_name ) ){ printf("--(!)Error loading\n");  }
 			 }
+		 }
+
+private: System::Void imageToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	             OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
+                 openFileDialog1->Filter = "avi files (*.jpeg)|*.jpeg|All files (*.*)|*.*";
+                 openFileDialog1->FilterIndex = 2;
+                 openFileDialog1->RestoreDirectory = true;
+
+                 if ( openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK )
+                 {
+                     if ( (openFileDialog1->OpenFile()) != nullptr )
+                     {
+                         string ImageFilemName;
+                         MarshalString(openFileDialog1->FileName, ImageFilemName);
+                         Mat oImage;
+                         Mat Curframe;
+                         Curframe = imread(ImageFilemName, CV_LOAD_IMAGE_COLOR);
+                         if(! Curframe.data )
+                         {
+                             this->Text = "Could not open image QQ";
+                             return;
+                         }
+                         this->Text = "YO";
+
+                         delete image1;
+                         image1 = CopyMatToBitmap(&Curframe);
+                         this->pictureBox1->Image=image1;
+
+                         //Activate Image Mode
+                     }
+                 }
+
 		 }
 };
 }

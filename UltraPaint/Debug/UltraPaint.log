@@ -1,4 +1,4 @@
-﻿已經開始建置於 2014/8/5 下午 04:35:59。
+﻿已經開始建置於 2014/8/5 下午 06:01:26。
      1>節點 2 (build 目標) 上的專案 "D:\Dropbox\Research\Ultra Vision Platform\UltraPaint\UltraPaint\UltraPaint.vcxproj"。
      1>InitializeBuildStatus:
          由於指定了 "AlwaysCreate"，因此正在建立 "Debug\UltraPaint.unsuccessfulbuild"。
@@ -8,12 +8,12 @@
          所有輸出都是最新的。
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\opencv\build\include /IC:\opencv\build\include /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\UltraPaint.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt UltraPaint.cpp /clr:nostdlib 
          UltraPaint.cpp
-     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(222): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
-     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(260): warning C4018: '<' : signed/unsigned 不相符
-     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(267): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
-     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(267): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
-     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(268): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
-     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(268): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(236): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(274): warning C4018: '<' : signed/unsigned 不相符
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(281): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(281): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(282): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
+     1>d:\dropbox\research\ultra vision platform\ultrapaint\ultrapaint\Form1.h(282): warning C4244: '引數' : 將 'double' 轉換為 'int'，由於型別不同，可能導致資料遺失
          所有輸出都是最新的。
        CoreResGen:
          相對於資源的來源檔案，並沒有資源過期。將略過產生資源。
